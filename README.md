@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Nombre del Proyecto</title>
+    <title>soyHenry Challenge</title>
 </head>
 <body>
 
