@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import NavBar from "./NavBar";
 import AlertSuccess from "./Alerts/AlertSuccess";
 import AlertFailure from "./Alerts/AlertFailure";
+import "../components/Styles/styles.scss";
 
 const Survey = () => {
   //useState
@@ -56,13 +57,13 @@ const Survey = () => {
     <div>
       <NavBar />
       <form class="row g-3" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
+        <div className={`mb-3 ${errors.name ? "has-error" : ""}`}>
           <label htmlFor="validationDefault01" className="form-label">
             Nombre completo
           </label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${errors.name ? "is-invalid" : ""}`}
             id="validationDefault01"
             {...register("name", {
               required: {
@@ -72,17 +73,17 @@ const Survey = () => {
             })}
           />
           {errors.name && (
-            <span className="text-danger">{errors.name.message}</span>
+            <div className="invalid-feedback">{errors.name.message}</div>
           )}
         </div>
 
-        <div className="mb-3">
+        <div className={`mb-3 ${errors.phoneNumber ? "has-error" : ""}`}>
           <label htmlFor="validationDefault02" className="form-label">
             Número de teléfono
           </label>
           <input
             type="tel"
-            className="form-control"
+            className={`form-control ${errors.phoneNumber ? "is-invalid" : ""}`}
             id="validationDefault02"
             {...register("phoneNumber", {
               required: {
@@ -92,17 +93,17 @@ const Survey = () => {
             })}
           />
           {errors.phoneNumber && (
-            <span className="text-danger">{errors.phoneNumber.message}</span>
+            <div className="invalid-feedback">{errors.phoneNumber.message}</div>
           )}
         </div>
 
-        <div className="mb-3">
+        <div className={`mb-3 ${errors.startDate ? "has-error" : ""}`}>
           <label htmlFor="validationDefaultDate" className="form-label">
             Fecha de inicio
           </label>
           <input
             type="date"
-            className="form-control"
+            className={`form-control ${errors.startDate ? "is-invalid" : ""}`}
             id="validationDefaultDate"
             {...register("startDate", {
               required: {
@@ -112,16 +113,16 @@ const Survey = () => {
             })}
           />
           {errors.startDate && (
-            <span className="text-danger">{errors.startDate.message}</span>
+            <div className="invalid-feedback">{errors.startDate.message}</div>
           )}
         </div>
 
-        <div className="mb-3">
+        <div className={`mb-3 ${errors.language ? "has-error" : ""}`}>
           <label htmlFor="validationDefault03" className="form-label">
             ¿Cuál es tu idioma preferido?
           </label>
           <select
-            className="form-select"
+            className={`form-select ${errors.language ? "is-invalid" : ""}`}
             id="validationDefault03"
             {...register("language", {
               required: {
@@ -138,14 +139,16 @@ const Survey = () => {
             <option value="French">Francés</option>
           </select>
           {errors.language && (
-            <span className="text-danger">{errors.language.message}</span>
+            <div className="invalid-feedback">{errors.language.message}</div>
           )}
         </div>
 
-        <div className="mb-3">
-          <label className="form-label">¿Cómo nos encontraste?</label>
+        <div className={`mb-3 ${errors.howFound ? "has-error" : ""}`}>
+          <label className="form-label" htmlFor="editHowFound">
+            ¿Cómo nos encontraste?
+          </label>
           <select
-            className="form-select"
+            className={`form-select ${errors.howFound ? "is-invalid" : ""}`}
             {...register("howFound", {
               required: {
                 value: true,
@@ -161,7 +164,7 @@ const Survey = () => {
             <option value="onlineSearch">Búsqueda en línea</option>
           </select>
           {errors.howFound && (
-            <span className="text-danger">{errors.howFound.message}</span>
+            <div className="invalid-feedback">{errors.howFound.message}</div>
           )}
         </div>
 
@@ -189,7 +192,7 @@ const Survey = () => {
               })}
             />
             {errors.terms && (
-              <span className="text-danger">{errors.terms.message}</span>
+              <span className="text-danger small">{errors.terms.message}</span>
             )}
             <label class="form-check-label" for="invalidCheck">
               Agree to terms and conditions
@@ -203,10 +206,7 @@ const Survey = () => {
           </button>
         </div>
       </form>
-      {showSuccess && <AlertSuccess />}{" "}
-      {/* Mostrar el mensaje de éxito si showSuccess es true */}
-      {showError && <AlertFailure />}{" "}
-      {/* Mostrar el mensaje de error si showError es true */}
+      {showSuccess && <AlertSuccess />} {showError && <AlertFailure />}{" "}
     </div>
   );
 };

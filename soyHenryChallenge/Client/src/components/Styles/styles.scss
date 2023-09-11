@@ -1,0 +1,17 @@
+// styles.scss
+
+$primary-color: #007bff;
+$font-size-small: 14px;
+
+// Estilos para el borde de error
+.has-error {
+    .form-control {
+      border-color: #ff0000; // Cambiar el color del borde a rojo en caso de error
+    }
+  }
+  
+  .invalid-feedback {
+    color: #ff0000; // Cambiar el color del mensaje de error a rojo
+    display: block; // Mostrar el mensaje de error
+  }
+  
