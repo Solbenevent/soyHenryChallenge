@@ -2,10 +2,9 @@ const { Survey } = require("../db");
 
 const updateSurvey = async (req, res) => {
     const { id } = req.params;
-    //const { name, phoneNumber, newsletter, startDate, language, howFound } = req.body; 
      const updateFields = req.body; 
     try {
-        //if(!name && !phoneNumber && !newsletter && !startDate && !language && !howFound)
+
         if(!Object.keys(updateFields).length) 
         return res.status(400).json({ message: "Error: Debe ingresar datos a cambiar" });
 

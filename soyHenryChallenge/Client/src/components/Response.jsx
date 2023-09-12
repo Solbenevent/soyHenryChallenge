@@ -50,11 +50,11 @@ const Response = () => {
         editedData
       );
       const updatedResponses = responses.map((response) =>
-        response.id === editingResponse.id
+        response.id === editingResponse.id // la response con el mismo id que editingResponse.id se actualiza con los datos en editedData, mientras que las demás responses permanecen sin cambios.
           ? { ...response, ...editedData }
           : response
       );
-      setResponses(updatedResponses);
+      setResponses(updatedResponses); //seteamos las respuestas
 
       setEditedData({
         name: "",
@@ -63,8 +63,8 @@ const Response = () => {
         howFound: "",
         startDate: "",
         newsletter: false,
-      });
-      setEditingResponse(null);
+      }); //limpiamos los campos
+      setEditingResponse(null); //no se está editando ninguna respuesta después de guardar los cambios.
       setIsEditing(false);
     } catch (error) {
       console.log(error);
