@@ -1,16 +1,16 @@
 /* Cambiar el tamaño de letra del span */
 .small {
-    font-size: 14px; /* Puedes ajustar el tamaño de fuente según tus preferencias */
+    font-size: 14px;
   }
   
   /* Estilo del borde del select en caso de error */
   .has-error .form-select {
-    border-color: #ff0000; /* Cambiar a color rojo en caso de error */
+    border-color: #ff0000; 
   }
   
   /* Estilo del mensaje de error debajo del select */
   .is-invalid + .invalid-feedback {
-    color: #ff0000; /* Cambiar a color rojo en caso de error */
-    display: block; /* Mostrar el mensaje de error */
+    color: #ff0000;
+    display: block; 
   }
   
