@@ -23,33 +23,14 @@ const Survey = () => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const {
-        name,
-        phoneNumber,
-        newsletter,
-        language,
-        howFound,
-        startDate,
-        terms,
-      } = data;
-      const surveyForm = {
-        name,
-        phoneNumber,
-        newsletter,
-        language,
-        howFound,
-        terms,
-        startDate,
-      };
-      await axios.post("http://localhost:3001/surveys", surveyForm);
-      console.log(surveyForm);
+      await axios.post("http://localhost:3001/surveys", data);
 
       setShowSuccess(true);
       setShowError(false);
     } catch (error) {
       setShowSuccess(false);
       setShowError(true);
-      throw new Error("Error al enviar el formulario" + "" + error);
+      throw new Error("Error al enviar el formulario: " + error);
     }
   };
 
